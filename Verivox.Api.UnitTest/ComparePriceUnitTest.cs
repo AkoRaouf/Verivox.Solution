@@ -56,9 +56,9 @@ namespace Verivox.Api.UnitTest
             var response = _client.GetAsync("/api/compare?consumptionPatterns=kjhads, jsadjh").Result;
             string result = (response.Content.ReadAsStringAsync().Result.ToString());
 
-            var isContin = result.Contains("The provided prameters is not correct!");
+            var isContain = result.Contains("The provided prameters is not correct!");
             //Assert
-            Assert.True(isContin);
+            Assert.True(isContain);
         }
     }
 }
