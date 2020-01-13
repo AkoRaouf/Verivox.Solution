@@ -25,16 +25,26 @@ namespace Verivox.Api.Controllers
         [HttpGet]
         public IActionResult Compare([FromQuery] string consumptionPatterns)
         {
+            #region Paramitter Validation
             if (string.IsNullOrEmpty(consumptionPatterns))
             {
                 _logger.LogError("The consumptionPatterns parameter is not contain any value.");
+                return new BadRequestObjectResult(new { message = "There are no provided prameters!", currentDate = DateTime.Now });
+            }
+            #endregion
+
+            #region Featching Parameters
+            ///Try to featch all consumption patterns based and convert them to a list.
+            var decimalSplitedPatterns = GetParameters(consumptionPatterns);
+            if (decimalSplitedPatterns.Count == 0)
+            {
+                _logger.LogError("The consumptionPatterns parameter is not contain any valid value.");
                 return new BadRequestObjectResult(new { message = "The provided prameters is not correct!", currentDate = DateTime.Now });
             }
+            #endregion
 
-            ///Try to featch all consumption patterns based and convert them to a list.
-            var decimalSplitedPatterns = consumptionPatterns.Split(',').Select(decimal.Parse).ToList();
+            #region Comparison
             var compareResult = new List<Recommendation>();
-
             try
             {
                 ///Try to compare annual costs based on patterns. 
@@ -46,7 +56,20 @@ namespace Verivox.Api.Controllers
                 return NotFound(compareResult);
             }
             _logger.LogError($"The comparison for {consumptionPatterns} has been done.");
-            return Ok(compareResult);
+            return Ok(compareResult); 
+            #endregion
+        }
+
+        public List<decimal> GetParameters(string consumptionPatterns)
+        {
+            var decimalSplitedPatterns = new List<decimal>();
+            foreach (var item in consumptionPatterns.Split(',').ToList())
+            {
+                if (decimal.TryParse(item, out decimal parsedValue))
+                    decimalSplitedPatterns.Add(parsedValue);
+            }
+
+            return decimalSplitedPatterns;
         }
     }
 }

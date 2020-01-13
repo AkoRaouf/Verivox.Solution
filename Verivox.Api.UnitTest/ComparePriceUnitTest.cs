@@ -39,14 +39,14 @@ namespace Verivox.Api.UnitTest
         }
 
         [Fact]
-        public void Test_Minimum_Result_Is()
+        public void Test_Minimum_Result_Is_280()
         {
             // Act
             var response = _client.GetAsync("/api/compare?consumptionPatterns=1000, 1500, 2300").Result;
-            var recomm = JsonConvert.DeserializeObject<List<Recommendation>>(response.Content.ToString());
+            var recommendations = JsonConvert.DeserializeObject<List<Recommendation>>(response.Content.ReadAsStringAsync().Result);
 
             //Assert
-            Assert.NotNull(response);
+            Assert.Equal(280, recommendations[0].AnnualCost);
         }
     }
 }
