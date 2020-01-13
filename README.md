@@ -7,7 +7,7 @@ be hosted as ASP.NET Core Web Api.
 
 The role of `Verivox.Api.Core.UnitTest` unit test project is to test core business. but `Verivox.Api.UnitTest` 
 is to test hosted service. This test project tries to host the API in a TestServer send HTTP request to that hosted 
-API and checks returned results.
+API and checks returned results. The `Verivox.Api` also has Swagger for testing through browser.
 
 **The technologies has been used with this solution**
 > - ASP.NET Web API Core 3.0
