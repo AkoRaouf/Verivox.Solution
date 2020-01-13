@@ -3,13 +3,25 @@ using Verivox.Api.Core.Interfaces;
 
 namespace Verivox.Api.Core.Products
 {
-    public class ProductA : IProduct
+    /// <summary>
+    /// basic electricity tariff product.
+    /// </summary>
+    public class BasicElectricityTariff : ITariff
     {
+        ///Name of tariff.
         public string Name => "basic electricity tariff";
 
+        ///Basic cost of tariff per month.
         private readonly decimal BasicCostPerMonth = 5;
+
+        //The consumption cost of tariff.
         private readonly decimal ConsumptionCost = 22;
 
+        /// <summary>
+        /// This method will calculate annual cost of tariff based on annual consumption.
+        /// </summary>
+        /// <param name="consumption"> consumption amount.</param>
+        /// <returns>annual cost</returns>
         public decimal Calculate(decimal consumption)
         {
             if (consumption <= 0)

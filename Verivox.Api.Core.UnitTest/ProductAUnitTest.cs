@@ -10,7 +10,7 @@ namespace Verivox.Api.Core.UnitTest
         public void Test_Conumption_3500()
         {
             //Arrange
-            IProduct product = new Products.ProductA();
+            ITariff product = new Products.BasicElectricityTariff();
             decimal consumption = 3500;
 
             //Act
@@ -25,7 +25,7 @@ namespace Verivox.Api.Core.UnitTest
         public void Test_Conumption_4500()
         {
             //Arrange
-            IProduct product = new Products.ProductA();
+            ITariff product = new Products.BasicElectricityTariff();
             decimal consumption = 4500;
 
             //Act
@@ -39,7 +39,7 @@ namespace Verivox.Api.Core.UnitTest
         public void Test_Conumption_6000()
         {
             //Arrange
-            IProduct product = new Products.ProductA();
+            ITariff product = new Products.BasicElectricityTariff();
             decimal consumption = 6000;
 
             //Act
@@ -53,7 +53,7 @@ namespace Verivox.Api.Core.UnitTest
         public void Test_Conumption_Exception()
         {
             //Arrange
-            IProduct product = new Products.ProductA();
+            ITariff product = new Products.BasicElectricityTariff();
             decimal consumption = 0;
             Exception exception = new Exception();
 

@@ -23,9 +23,9 @@ namespace Verivox.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IProductComparison, ProductsList>();
-            services.AddSingleton<IProduct, ProductA>();
-            services.AddSingleton<IProduct, ProductB>();
+            services.AddSingleton<ITariffComparison, TariffComparison>();
+            services.AddSingleton<ITariff, BasicElectricityTariff>();
+            services.AddSingleton<ITariff, PackagedTariff>();
 
             services.AddMvc();
 

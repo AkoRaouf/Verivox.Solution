@@ -13,15 +13,15 @@ namespace Verivox.Api.Core.UnitTest
         public void ProductList_Recommendation()
         {
             //Arrange
-            IProduct productA = new ProductA();
-            IProduct productB = new ProductB();
+            ITariff productA = new BasicElectricityTariff();
+            ITariff productB = new PackagedTariff();
 
             //Act
-            var products = new List<IProduct>();
+            var products = new List<ITariff>();
             products.Add(productA);
             products.Add(productB);
 
-            var productList = new ProductsList(products);
+            var productList = new TariffComparison(products);
             var recommendation = productList.Compare(new List<decimal> { 1000, 3500, 4500, 6000, 7200, 10000 });
             //Assert
             Assert.Equal(280, recommendation[0].AnnualCost);
