@@ -48,5 +48,17 @@ namespace Verivox.Api.UnitTest
             //Assert
             Assert.Equal(280, recommendations[0].AnnualCost);
         }
+
+        [Fact]
+        public void Test_Missing_Parameters()
+        {
+            // Act
+            var response = _client.GetAsync("/api/compare?consumptionPatterns=kjhads, jsadjh").Result;
+            string result = (response.Content.ReadAsStringAsync().Result.ToString());
+
+            var isContin = result.Contains("The provided prameters is not correct!");
+            //Assert
+            Assert.True(isContin);
+        }
     }
 }

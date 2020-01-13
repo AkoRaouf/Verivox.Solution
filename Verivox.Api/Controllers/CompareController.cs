@@ -55,7 +55,7 @@ namespace Verivox.Api.Controllers
                 _logger.LogError("There some errors in comparing plans!", exception);
                 return NotFound(compareResult);
             }
-            _logger.LogError($"The comparison for {consumptionPatterns} has been done.");
+            _logger.LogInformation($"The comparison for {consumptionPatterns} has been done.");
             return Ok(compareResult); 
             #endregion
         }
