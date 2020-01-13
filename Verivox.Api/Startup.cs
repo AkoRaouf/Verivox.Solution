@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using System.Collections.Generic;
 using Verivox.Api.Core.Interfaces;
 using Verivox.Api.Core.Products;
+using Microsoft.OpenApi.Models;
 
 namespace Verivox.Api
 {
@@ -25,6 +26,13 @@ namespace Verivox.Api
             services.AddSingleton<IProductComparison, ProductsList>();
             services.AddSingleton<IProduct, ProductA>();
             services.AddSingleton<IProduct, ProductB>();
+
+            services.AddMvc();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Verivox.Api", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +50,12 @@ namespace Verivox.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
         }
     }
