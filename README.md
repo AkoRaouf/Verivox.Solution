@@ -1,8 +1,13 @@
-# Verivox.Solution
-Interview Task SW Development(m/f)
-The technologies.
-1-	ASP.NET Web API Core 3.0
-2-	xUnit for Unit Testing
-3-	.Net Standard for Class Libraries.
-4-	Basic .Net Core Log.
-5-	Swagger 5.0.0-rc5.
+# Interview Task SW Development(m/f)
+## Verivox.Solution
+
+**The technologies has been used with this solution**
+> ASP.NET Web API Core 3.0
+
+> xUnit for Unit Testing
+
+> .Net Standard for Class Libraries.
+
+> Basic .Net Core Log.
+
+> Swagger 5.0.0-rc5.
