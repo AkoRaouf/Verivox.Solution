@@ -21,3 +21,5 @@ API and checks returned results. The `Verivox.Api` also has Swagger for testing 
 > - Swagger 5.0.0-rc5.
 
 > - Basic .Net Core Debendency Injection Container.
+
+> - TestServer For Integration Testing.
